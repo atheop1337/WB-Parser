@@ -2,6 +2,7 @@
 
 This Python script is a fork of another repository, where bugs have been fixed and the code made fully functional. It scrapes item information from Wildberries.ru and stores it in an Excel file. It supports parsing by directory or search keyword and gathers data such as link, ID, name, brand, pricing, rating, reviews, and sales. Ideal for market research and analysis.
 
+![wb](wb.jpg)
 
 
 ## Original Repository
