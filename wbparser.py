@@ -89,12 +89,12 @@ class WildBerriesParser:
             return False
 
     def get_all_products_in_category(self, category_data: tuple):
-        for page in range(1, 10):
+        for page in range(1, 11):
             print(f"Загружаю товары со страницы {page}")
             url = (f"https://catalog.wb.ru/catalog/{category_data[1]}/catalog?appType=1&{category_data[2]}&curr=rub&dest=-1257786&page={page}&sort=popular&spp=24")
             if self.add_data_from_page(url):
                 break
-            time.sleep(1)  # Пауза между запросами для уменьшения нагрузки на сервер
+            time.sleep(1)
 
     def get_sales_data(self):
         for card in self.product_cards:
@@ -118,14 +118,14 @@ class WildBerriesParser:
         return result_path
 
     def get_all_products_in_search_result(self, key_word: str):
-        for page in range(1, 101):
+        for page in range(1, 11):
             print(f"Загружаю товары со страницы {page}")
             url = (f"https://search.wb.ru/exactmatch/ru/common/v4/search?appType=1&curr=rub&dest=-1257786&page={page}&query={'%20'.join(key_word.split())}&resultset=catalog&sort=popular&spp=24&suppressSpellcheck=false")
             if self.add_data_from_page(url):
                 break
 
     def run_parser(self):
-        instructons = """Введите 1 для парсинга категории целиком, 2 — по ключевым словам: """
+        instructons = """1. Для парсинга категории целиком\n2. Для парсинга по ключевым словам\nВыбор: """
         mode = input(instructons)
         if mode == '1':
             local_catalogue_path = self.download_current_catalogue()
